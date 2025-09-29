@@ -85,11 +85,14 @@ df$Cluster <- factor(df$Cluster, levels = levels(Idents(combined)))
 
 theme_set(theme_bw(base_size = 14))
 p <- ggplot(df, aes(Cluster, Jaccard)) +
-  geom_boxplot(fill = "grey80", color = "black", outlier.shape = 1, width = 0.7) +
+  geom_boxplot(fill = "grey80", color = "black", 
+               outlier.shape = NA, width = 0.7) +
   geom_jitter(width = 0.2, size = 0.6, alpha = 0.6) +
   scale_y_continuous(limits = c(0,1)) +
   labs(title = "Cluster Stability",
-       y = "Normalized Jaccard Index", x = "Cluster Number") + theme(panel.grid = element_blank())
+       y = "Normalized Jaccard Index", 
+       x = "Cluster Number") + 
+  theme(panel.grid = element_blank())
 p
 
 # Save plot
