@@ -1,5 +1,4 @@
 # Code by Jason Huang with help from Zack Gaertner and Amanda Schneeweis
-# Email: jasonhuang2024.2@u.northwestern.edu, zachary.gaertner@northwestern.edu, amanda.schneeweis@northwestern.edu
 
 # Load libraries
 library(Seurat)

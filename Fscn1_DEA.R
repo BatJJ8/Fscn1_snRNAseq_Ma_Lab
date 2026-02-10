@@ -1,5 +1,4 @@
 # Code by Jason Huang modified from code provided by Zack Gaertner and Amanda Schneeweis
-# Email: zachary.gaertner@northwestern.edu, amanda.schneeweis@northwestern.edu
 
 # Load libraries
 library(Seurat)
@@ -7,7 +6,6 @@ library(SeuratData)
 library(SeuratObject)
 library(patchwork)
 library(tidyverse)
-library(patchwork)
 library(writexl)
 library(ggrepel)
 library(tools)
@@ -113,7 +111,6 @@ mast_res <- mast_res[order(mast_res$avg_log2FC, decreasing = TRUE), ]
 mast_up   <- subset(mast_res, avg_log2FC >  0 & p_val < 0.01)
 mast_down <- subset(mast_res, avg_log2FC <  0 & p_val < 0.01)
 
-# Export to Excel
 wb <- createWorkbook()
 addWorksheet(wb, "MAST_All_DEGs");  writeData(wb, "MAST_All_DEGs",  mast_res,    rowNames = TRUE)
 addWorksheet(wb, "MAST_KO_UP");    writeData(wb, "MAST_KO_UP",    mast_up,     rowNames = TRUE)
@@ -196,7 +193,6 @@ for (ct in cell_types) {
   }
 }
 
-# Export to Excel
 abbrs <- c("Immature Oligodendrocytes"="IO",
            "Mature Oligodendrocytes"  ="MO",
            "Astrocyte Precursor Cells"="APCs",
