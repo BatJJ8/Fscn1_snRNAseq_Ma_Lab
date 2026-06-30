@@ -50,30 +50,6 @@ conversion <- function(gene_list) {
   })
 }
 
-inflam <- read_excel("C:/Users/weihu/OneDrive/Desktop/Ma Lab/Important Lists/jason_comprehensive_inflammation_list.xlsx")
-schwaner_inflam <- inflam$`Inflam related genes (Schwaner)` %>% 
-  conversion()
-cdg_inflam <- inflam$`Human inflam genes (CDG)` %>% 
-  conversion()
-cytokines <- inflam$`Cytokines (KEGG)` %>% 
-  conversion()
-necroptosis <- inflam$`Necroptosis (KEGG)` %>% 
-  conversion()
-pyroptosis <- inflam$`Pyroptosis (MGI)` %>% 
-  conversion()
-combined_inflam <- c(schwaner_inflam, cdg_inflam, cytokines, necroptosis, pyroptosis)
-
-mitocarta <- read_excel("C:/Users/weihu/OneDrive/Desktop/Ma Lab/Important Lists/MitoCarta3.0_mitochondrial_genes.xlsx")
-mitocarta <- mitocarta$Symbol
-
-AD_KEGG <- read_excel("C:/Users/weihu/OneDrive/Desktop/Ma Lab/Important Lists/AD_KEGG_gene_list.xlsx")
-AD_KEGG_genes <- AD_KEGG$gene_symbol %>% 
-  conversion()
-AD_MalaCards <- read_csv("C:/Users/weihu/OneDrive/Desktop/Ma Lab/Important Lists/AD_MalaCards_gene_list.csv")
-AD_MalaCards_genes <- AD_MalaCards$`Gene Symbol` %>% 
-  conversion()
-combined_AD <- c(AD_KEGG_genes, AD_MalaCards_genes)
-
 
 # Load the integrated Seurat object
 combined <- readRDS("combined_fascin_seurat_object.rds")
