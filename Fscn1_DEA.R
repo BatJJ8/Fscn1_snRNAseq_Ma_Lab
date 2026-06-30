@@ -171,7 +171,6 @@ for (ct in cell_types) {
 
 abbrs <- c("Immature Oligodendrocytes"="IO",
            "Mature Oligodendrocytes"  ="MO",
-           "Astrocyte Precursor Cells"="APCs",
            "Ependymal Cells"          ="Ependymal")
 
 wb <- createWorkbook()
