@@ -148,20 +148,10 @@ for (ct in cell_types) {
     de_down      <- subset(de, avg_log2FC <  0 & p_val < 0.01) %>%
       arrange(avg_log2FC)
     
-    inflam_tbl   <- subset(de, rownames(de) %in% combined_inflam & p_val < 0.01) %>%
-      arrange(avg_log2FC)
-    mitocarta_tbl<- subset(de, rownames(de) %in% mitocarta       & p_val < 0.01) %>%
-      arrange(desc(avg_log2FC))
-    ad_tbl       <- subset(de, rownames(de) %in% combined_AD     & p_val < 0.01) %>%
-      arrange(desc(avg_log2FC))
-    
     markers_list[[ct]] <- list(
       markers      = de,
       markers_up   = de_up,
-      markers_down = de_down,
-      inflam       = inflam_tbl,
-      mitocarta    = mitocarta_tbl,
-      AD           = ad_tbl
+      markers_down = de_down
     )
     
   } else {
@@ -197,27 +187,6 @@ for (ct in names(markers_list)) {
   addWorksheet(wb, sheet_down)
   writeData(wb, sheet = sheet_down,
             x     = markers_list[[ct]]$markers_down,
-            rowNames = TRUE)
-  
-  # Inflammation panel
-  sheet_infl <- paste(short_ct, "Inflam")
-  addWorksheet(wb, sheet_infl)
-  writeData(wb, sheet = sheet_infl,
-            x     = markers_list[[ct]]$inflam,
-            rowNames = TRUE)
-  
-  # Mitocarta panel
-  sheet_mito <- paste(short_ct, "Mitocarta")
-  addWorksheet(wb, sheet_mito)
-  writeData(wb, sheet = sheet_mito,
-            x     = markers_list[[ct]]$mitocarta,
-            rowNames = TRUE)
-  
-  # AD panel
-  sheet_ad   <- paste(short_ct, "AD")
-  addWorksheet(wb, sheet_ad)
-  writeData(wb, sheet = sheet_ad,
-            x     = markers_list[[ct]]$AD,
             rowNames = TRUE)
 }
 
