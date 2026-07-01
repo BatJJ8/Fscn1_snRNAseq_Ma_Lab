@@ -1,6 +1,3 @@
-#Code by Jason Huang modified from code provided by Zack Gaertner and Amanda Schneeweis
-#Email: zachary.gaertner@northwestern.edu, amanda.schneeweis@northwestern.edu
-
 # Load libraries
 library(Seurat)
 library(SeuratData)
